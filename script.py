@@ -12,7 +12,7 @@ def input_prompt() -> str:
 
 def check_input(item: str) -> bool:
     # Проверка соответствия ввода указанному в задании шаблону
-    pattern1 = r"(?:[\d]{1,2}[^\\]*/[\d]{1,2}[^\\]*){1,2}/[\d]{1,2}[^\\]*" 
+    pattern1 = r"(?:[\d]{1,2}[^\\]*\\[\d]{1,2}[^\\]*){1,2}\\[\d]{1,2}[^\\]*" 
     pattern2 = r"[\d]{1,2}[^\\]*" # Пропускает ввод в формате (число// | число)
     check1 = re.match(pattern1, item) or re.match(pattern2, item)
     check2 = len(re.findall(r"\\", item)) in (0, 2, 4)
@@ -47,4 +47,4 @@ if __name__ == "__main__":
         if check_input(item):
             parse_item(item)
         else:
-            raise InputError("Введен некорректный артикул")
+            print("Введите корректный артикул")
